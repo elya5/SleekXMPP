@@ -1677,7 +1677,10 @@ class XMLStream(object):
 
                 etype, handler = event[0:2]
                 args = event[2:]
-                orig = copy.copy(args[0])
+                try:
+                    orig = copy.copy(args[0])
+                except TypeError:
+                    orig = args[0]
 
                 if etype == 'stanza':
                     try:
